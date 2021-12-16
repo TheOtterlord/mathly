@@ -9,7 +9,25 @@
   "private": false,
   "scripts": {
     "build": "tsc",
-    "test": "jest tests"
+    "test": "jest tests",
+    "commit": "cz",
+    "commit:signed": "cz -S"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{html,css,less,ejs}": [
+      "prettier --write"
+    ],
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   },
   "devDependencies": {
     "@types/jest": "^27.0.3",
@@ -17,7 +35,14 @@
     "nodemon": "^2.0.15",
     "ts-jest": "^27.1.2",
     "ts-node": "^10.4.0",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "commitizen": "^4.2.3",
+    "commitlint": "~12.1.4",
+    "cz-conventional-changelog": "3.3.0",
+    "prettier": "^2.3.0",
+    "lint-staged": "^11.0.0"
   },
   "dependencies": {
     "jest": "^27.4.5"
