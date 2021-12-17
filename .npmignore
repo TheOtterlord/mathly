@@ -1,5 +1,6 @@
 .github/
 .vscode/
+docs/
 src/
 tests/
 .gitignore
@@ -7,3 +8,4 @@ tests/
 commitlint.config.js
 jest.config.js
 tsconfig.json
+typedoc.json
