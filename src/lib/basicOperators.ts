@@ -9,15 +9,12 @@ export const BasicOperators = {
    */
   sum(...numbers: (number | number[])[]): number {
     let result = 0;
-
     let flatNumbers = numbers.flatMap((n) => n);
+
+    testNaN(numbers);
 
     flatNumbers.map((n) => {
       if (typeof n == "number") return (result = result + n);
-      else
-        throw new Error(
-          `A Non-Number Value has been passed to sum method: ${n}`
-        );
     });
 
     return result;
@@ -53,5 +50,28 @@ export const BasicOperators = {
     });
 
     return product;
+  },
+
+  /**
+   * Multiply a number, or set of numbers by another number.
+   *
+   * If provided with with a single number, this method will take that number and multiply it by the
+   * multiplier, if it is passed an object, it will multiply each number in that object by the multiplier
+   * and return the updated object with all the values that have been multiplied.
+   *
+   * @param numbers - The number or numbers that you want multiplied
+   * @param multiplier - The number your multiplying by.
+   *
+   * @returns {number | number[]} The resulting number or set of numbers
+   */
+  multiplyBy(
+    numbers: number | number[],
+    multiplier: number
+  ): number | number[] {
+    testNaN([numbers]);
+    testNaN([multiplier]);
+
+    if (typeof numbers == "number") return numbers * multiplier;
+    else return numbers.map((n) => n * multiplier);
   },
 };

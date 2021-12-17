@@ -35,3 +35,24 @@ test("sequential multiplication", () => {
   //@ts-ignore
   expect(() => Mathly.multiply(1, ["1"])).toThrow(Error);
 });
+
+test("multiplication by a number", () => {
+  // Tests with a single multiplier
+  expect(Mathly.multiplyBy(10, 0)).toBe(0);
+  expect(Mathly.multiplyBy(10, 1)).toBe(10);
+  expect(Mathly.multiplyBy(50, 2)).toBe(100);
+  expect(Mathly.multiplyBy(34834, 45083)).toBe(1570421222);
+  expect(Mathly.multiplyBy(0, 0)).toBe(0);
+
+  // Tests with an array
+  expect(Mathly.multiplyBy([0, 1], 1)).toStrictEqual([0, 1]);
+  expect(Mathly.multiplyBy([50, 25], 4)).toStrictEqual([200, 100]);
+  expect(Mathly.multiplyBy([234348, 69], 3478349)).toStrictEqual([
+    815144131452, 240006081,
+  ]);
+
+  //@ts-ignore Make sure it will throw NaN errors
+  expect(() => Mathly.multiplyBy("69", 1)).toThrow(Error);
+  //@ts-ignore
+  expect(() => Mathly.multiplyBy(1, "2")).toThrow(Error);
+});
