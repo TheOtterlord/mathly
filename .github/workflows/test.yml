@@ -1,4 +1,4 @@
-name: Test Mathly
+name: Execute tests
 
 on: [push, pull_request]
 
