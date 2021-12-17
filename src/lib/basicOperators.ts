@@ -1,13 +1,13 @@
 import { testNaN } from "../util/testNaN";
 
-export default class BasicOperators {
+export const BasicOperators = {
   /**
    * Get the collective sum of all the numbers provided.
    *
    * @param numbers - a number or an array of numbers
-   * @returns {number} - The sum of all the numbers provided
+   * @returns {number} The sum of all the numbers provided
    */
-  public static sum(...numbers: (number | number[])[]): number {
+  sum(...numbers: (number | number[])[]): number {
     let result = 0;
 
     let flatNumbers = numbers.flatMap((n) => n);
@@ -21,7 +21,7 @@ export default class BasicOperators {
     });
 
     return result;
-  }
+  },
 
   /**
    * Multiply a set of numbers in sequential order
@@ -31,9 +31,9 @@ export default class BasicOperators {
    * This follows the order of PEMDAS.
    *
    * @param numbers - The numbers that you will be multiplying together
-   * @returns {number} - The product of the numbers provided
+   * @returns {number} The product of the numbers provided
    */
-  public static multiply(...numbers: (number | (number | number[]))[]): number {
+  multiply(...numbers: (number | (number | number[]))[]): number {
     let product: number = 0;
     let arrFinal: number[] = [];
     let calculationStarted = false;
@@ -53,5 +53,5 @@ export default class BasicOperators {
     });
 
     return product;
-  }
-}
+  },
+};

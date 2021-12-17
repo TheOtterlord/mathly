@@ -1,3 +1,7 @@
-import BasicOperators from "./lib/basicOperators";
+import { BasicOperators } from "./lib/basicOperators";
 
-export default class Mathly extends BasicOperators {}
+export const Mathly = {
+  ...BasicOperators,
+};
+
+export default Mathly;
