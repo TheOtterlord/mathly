@@ -8,19 +8,19 @@ export default class BasicOperators {
    * @returns {number} - The sum of all the numbers provided
    */
   public static sum(...numbers: (number | number[])[]): number {
-    let product = 0;
+    let result = 0;
 
     let flatNumbers = numbers.flatMap((n) => n);
 
     flatNumbers.map((n) => {
-      if (typeof n == "number") return (product = product + n);
+      if (typeof n == "number") return (result = result + n);
       else
         throw new Error(
           `A Non-Number Value has been passed to sum method: ${n}`
         );
     });
 
-    return product;
+    return result;
   }
 
   /**
