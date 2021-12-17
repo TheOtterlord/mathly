@@ -17,3 +17,21 @@ test("sum method", () => {
   // @ts-ignore
   expect(() => Mathly.sum(1, 2, [1, "2"])).toThrow(Error);
 });
+
+test("sequential multiplication", () => {
+  // Basic two number tests
+  expect(Mathly.multiply(2, 2)).toBe(4);
+  expect(Mathly.multiply(8573, 99485)).toBe(852884905);
+
+  // Basic tests with an array
+  expect(Mathly.multiply([3, 3])).toBe(9);
+  expect(Mathly.multiply(2, 2, [2, 2])).toBe(16);
+
+  // One
+  expect(Mathly.multiply(1, 1, [1, 1, 1], 1, 1, [1, 1, 1])).toBe(1);
+
+  // @ts-ignore Make sure it will throw NaN errors
+  expect(() => Mathly.multiply(1, "1")).toThrow(Error);
+  //@ts-ignore
+  expect(() => Mathly.multiply(1, ["1"])).toThrow(Error);
+});
