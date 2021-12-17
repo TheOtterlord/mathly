@@ -46,5 +46,13 @@
   },
   "dependencies": {
     "jest": "^27.4.5"
-  }
+  },
+  "keywords": [
+    "math",
+    "mathly",
+    "multiplication",
+    "addation",
+    "division",
+    "subtraction"
+  ]
 }
