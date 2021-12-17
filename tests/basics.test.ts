@@ -13,5 +13,7 @@ test("sum method", () => {
   expect(Mathly.sum(100, 200, [1000, 20000])).toBe(21300);
 
   // @ts-ignore Make sure it will not accept non-numbers
-  expect(Mathly.sum(1, "2")).toThrowError();
+  expect(() => Mathly.sum(1, "2")).toThrow(Error);
+  // @ts-ignore
+  expect(() => Mathly.sum(1, 2, [1, "2"])).toThrow(Error);
 });
