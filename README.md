@@ -6,4 +6,3 @@
 </h1>
 
 Mathly is a package designed to provide you with the tools and resources to do any mathmatical operation you want to. You will be able to do anything the JS Math library can do, and much more!
-gi
