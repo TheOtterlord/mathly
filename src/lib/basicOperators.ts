@@ -31,7 +31,7 @@ export const BasicOperators = {
    */
   subtract(...numbers: (number | number[])[]): number {
     let flatNumbers = numbers.flatMap((n) => n);
-    console.log(flatNumbers);
+
     testNaN(numbers);
 
     return flatNumbers.reduce((a, b) => a - b);
@@ -170,4 +170,38 @@ export const BasicOperators = {
     if (typeof numbers == "number") return numbers / divisor;
     else return numbers.map((n) => n / divisor);
   },
+
+  /**
+   * Raise numbers to the power of the next number in the sequence
+   * 
+   * This method will take a single number or set of numbers and raise them to the power of the next number in the sequence.
+   * It returns the result of this operation as a single number.
+   * 
+   * @param numbers The numbers to raise to each other sequentially
+   * @returns The result of raising each number to the next number in the sequence
+   */
+  riseSeq(...numbers: (number | number[])[]): number {
+    testNaN(numbers);
+
+    let flatMap = numbers.flatMap((n) => n);
+    return flatMap.reduce((a, b) => a ** b);
+  },
+
+  /**
+   * Raise a number or set of numbers to an exponent
+   * 
+   * This method will take a single number or set of numbers and raise them to the power of the exponent provided.
+   * It returns the result of this operation as a number or set of numbers depending on the input.
+   * 
+   * @param numbers The numbers to raise to the exponent
+   * @param exponent The exponent to raise the numbers to
+   * @returns A number or set of numbers raised to the exponent
+   */
+  riseTo(numbers: number | number[], exponent: number): number | number[] {
+    testNaN([numbers]);
+    testNaN([exponent]);
+
+    if (typeof numbers == "number") return numbers ** exponent;
+    return numbers.map((n) => n ** exponent);
+  }
 };

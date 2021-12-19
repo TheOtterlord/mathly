@@ -123,3 +123,39 @@ test("division by a single number", () => {
   //@ts-ignore
   expect(() => Mathly.divideBy(1, "2")).toThrow(Error);
 });
+
+test("sequential exponentiation", () => {
+  // Test with two numbers (a**b)
+  expect(Mathly.riseSeq(2, 2)).toBe(4);
+  expect(Mathly.riseSeq(2, 3)).toBe(8);
+  expect(Mathly.riseSeq(2, 0)).toBe(1);
+  expect(Mathly.riseSeq(0, 0)).toBe(1);
+
+  // Tests with an array of numbers
+  expect(Mathly.riseSeq([2, 3])).toStrictEqual(8);
+
+  // Test with many numbers in a mix
+  expect(Mathly.riseSeq(2, [2, 2])).toStrictEqual(16);
+  expect(Mathly.riseSeq(2, [2, 2], 2)).toStrictEqual(256);
+
+  //@ts-ignore Make sure it will throw NaN errors
+  expect(() => Mathly.riseSeq("1")).toThrow(Error);
+  //@ts-ignore
+  expect(() => Mathly.riseSeq(["1"])).toThrow(Error);
+});
+
+test("raise all to an exponent", () => {
+  // Test with a single number
+  expect(Mathly.riseTo(2, 2)).toBe(4);
+  expect(Mathly.riseTo(0, 3)).toBe(0);
+  expect(Mathly.riseTo(3, 0)).toBe(1);
+
+  // Test with an array of numbers
+  expect(Mathly.riseTo([2, 3], 2)).toStrictEqual([4, 9]);
+  expect(Mathly.riseTo([0, 3], 2)).toStrictEqual([0, 9]);
+
+  //@ts-ignore Make sure it will throw NaN errors
+  expect(() => Mathly.riseTo("1", 1)).toThrow(Error);
+  //@ts-ignore
+  expect(() => Mathly.riseTo(["1"], 1)).toThrow(Error);
+});
