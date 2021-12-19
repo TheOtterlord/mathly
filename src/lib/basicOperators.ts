@@ -21,6 +21,24 @@ export const BasicOperators = {
   },
 
   /**
+   * Add a number to a number or set of numbers.
+   * 
+   * This method will take a number or set of numbers and add the second argument to each.
+   * It will return the result of the addition.
+   * 
+   * @param numbers - a number or an array of numbers
+   * @param add - the number to add to each number
+   * @returns {number} The sum of all the numbers provided
+   */
+  sumFrom(numbers: number | number[], add: number): number | number[] {
+    testNaN([numbers]);
+    testNaN([add]);
+
+    if (typeof numbers == "number") return numbers + add;
+    return numbers.map(n => n + add);
+  },
+
+  /**
    * Subtraction a set of numbers in sequence.
    * 
    * This method will take a single number or set of numbers and subtract them in sequence.

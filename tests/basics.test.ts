@@ -18,6 +18,19 @@ test("sum method", () => {
   expect(() => Mathly.sum(1, 2, [1, "2"])).toThrow(Error);
 });
 
+test("sumFrom method", () => {
+  // Basic tests with a single number
+  expect(Mathly.sumFrom(20, 40)).toBe(60);
+
+  // Basic tests with an array
+  expect(Mathly.sumFrom([20, 40], 20)).toStrictEqual([40, 60]);
+
+  // @ts-ignore Make sure it will not accept non-numbers
+  expect(() => Mathly.sumFrom(1, "1")).toThrow(Error);
+  // @ts-ignore
+  expect(() => Mathly.sumFrom("1", 1)).toThrow(Error);
+});
+
 test("subtract method", () => {
   // Basic tests with two numbers
   expect(Mathly.subtract(20, 10)).toBe(20 - 10);
