@@ -105,3 +105,6 @@ dist
 
 .lib/
 public/
+
+#temp
+/docs/

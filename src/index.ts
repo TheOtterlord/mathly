@@ -1,7 +1,9 @@
 import { BasicOperators } from "./lib/basicOperators";
 
-export const Mathly = {
+const Mathly = {
   ...BasicOperators,
 };
 
-export default Mathly;
+export default {
+  ...Mathly,
+};
