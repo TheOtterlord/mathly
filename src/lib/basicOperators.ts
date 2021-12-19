@@ -21,6 +21,34 @@ export const BasicOperators = {
   },
 
   /**
+   * Get the collective subtraction of all the numbers provided.
+   *
+   * @param numbers - a number or an array of numbers
+   * @returns {number} The subtraction of all the numbers provided
+   */
+  subtract(...numbers: (number | number[])[]): number {
+    let flatNumbers = numbers.flatMap((n) => n);
+    console.log(flatNumbers);
+    testNaN(numbers);
+
+    return flatNumbers.reduce((a, b) => a - b);
+  },
+
+  /**
+   * Get the collective subtraction of all the numbers provided.
+   *
+   * @param numbers - a number or an array of numbers
+   * @returns {number} The subtraction of all the numbers provided
+   */
+  subtractBy(numbers: number | number[], sub: number): number | number[] {
+    testNaN([numbers]);
+    testNaN([sub]);
+
+    if (typeof numbers == "number") return numbers - sub;
+    else return numbers.map((n) => n - sub);
+  },
+
+  /**
    * Multiply a set of numbers in sequential order
    *
    * This method will take all the number provided and multiply them together.  In this method brackes
