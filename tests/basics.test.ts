@@ -44,7 +44,7 @@ test("multiplication by a number", () => {
   expect(Mathly.multiplyBy(34834, 45083)).toBe(1570421222);
   expect(Mathly.multiplyBy(0, 0)).toBe(0);
 
-  // Tests with an array
+  // Tests with an array of numbers
   expect(Mathly.multiplyBy([0, 1], 1)).toStrictEqual([0, 1]);
   expect(Mathly.multiplyBy([50, 25], 4)).toStrictEqual([200, 100]);
   expect(Mathly.multiplyBy([234348, 69], 3478349)).toStrictEqual([
@@ -55,4 +55,37 @@ test("multiplication by a number", () => {
   expect(() => Mathly.multiplyBy("69", 1)).toThrow(Error);
   //@ts-ignore
   expect(() => Mathly.multiplyBy(1, "2")).toThrow(Error);
+});
+
+test("sequential division", () => {
+  // Test with a singile
+  expect(Mathly.divide(4, 2)).toBe(2);
+  expect(Mathly.divide(2, 4)).toBe(0.5);
+  expect(Mathly.divide(100, 4)).toBe(25);
+
+  // Tests with an array of numbers
+  expect(Mathly.divide([10, 2], 1)).toBe(5);
+  expect(Mathly.divide([75, 3])).toBe(25);
+  expect(Mathly.divide([1000, 10], 10)).toBe(10);
+
+  //@ts-ignore Make sure it will throw NaN errors
+  expect(() => Mathly.divide("69", 1)).toThrow(Error);
+  //@ts-ignore
+  expect(() => Mathly.divide(1, ["3"])).toThrow(Error);
+});
+
+test("division by a single number", () => {
+  // Test with a single multiplier
+  expect(Mathly.divideBy(30, 2)).toBe(15);
+  expect(Mathly.divideBy(100, 4)).toBe(25);
+  expect(Mathly.divideBy(75, 3)).toBe(25);
+
+  // Tests with an array of numbers
+  expect(Mathly.divideBy([75, 100], 25)).toStrictEqual([3, 4]);
+  expect(Mathly.divideBy([100, 1000], 10)).toStrictEqual([10, 100]);
+
+  //@ts-ignore Make sure it will throw NaN errors
+  expect(() => Mathly.divideBy("69", 1)).toThrow(Error);
+  //@ts-ignore
+  expect(() => Mathly.divideBy(1, "2")).toThrow(Error);
 });

@@ -23,7 +23,7 @@ export const BasicOperators = {
   /**
    * Multiply a set of numbers in sequential order
    *
-   * This method will take all the number provided and multiply them together.  In this method brackes
+   * This method will take all the number provided and multiply them together.  In this method brackets
    * will act like parentheses where the numbers inside will be multiplied together before being executed.
    * This follows the order of PEMDAS.
    *
@@ -73,5 +73,67 @@ export const BasicOperators = {
 
     if (typeof numbers == "number") return numbers * multiplier;
     else return numbers.map((n) => n * multiplier);
+  },
+
+  /**
+   * Divide a set of numbers in sequential order
+   *
+   * This method will take all of the numbers provided and divde them sequentially.  In this method, brackets
+   * will act like parentheses where the numbers inside will be divided prior to the rest of the rest.  This
+   * follows the order of PEMDAS.
+   *
+   * @example ```ts
+   * divide(10, 1); // This is 10
+   * divide(1, 10); // This is 0.1
+   *
+   * divide(10, [1000, 10]); // This is 0.1
+   * divide([1000, 10], 10); // This is 10
+   * ```
+   *
+   * @param numbers - The numbers that you will be dividng together
+   * @returns {number} The quotient of the divided numbers
+   */
+  divide(...numbers: (number | number[])[]): number {
+    let quotient: number = 0;
+    let arrFinal: number[] = [];
+    let calculationStarted = false;
+
+    testNaN(numbers);
+
+    numbers.map((n) => {
+      if (typeof n == "number") return arrFinal.push(n);
+      if (n instanceof Array) return arrFinal.push(BasicOperators.divide(...n));
+    });
+
+    arrFinal.map((n) => {
+      if (quotient == 0 && !calculationStarted) quotient = n;
+      if (!calculationStarted) return (calculationStarted = true);
+      return (quotient = quotient / n);
+    });
+
+    return quotient;
+  },
+
+  /**
+   * Divide a set of numbers by a single divisor
+   *
+   * This method will take a single number or set of numbers and divide it by one single number and the result
+   * will be either an array of quotents, or a single quotent based on weather you put in a single dividend or
+   * an array of dividend's
+   *
+   * ## Key Word Definitions
+   * - **Dividend** - The number being divided and/or distributed (Top number of a fraction)
+   * - **Divisor** - The number the is being divided by. (Bottom number of a fraction)
+   *
+   * @param numbers - Your set of dividends
+   * @param divisor - The divisor you want to divide the dividends by.
+   * @returns An array of quotents equal to all of your dividends divided by your divisors
+   */
+  divideBy(numbers: number | number[], divisor: number) {
+    testNaN([numbers]);
+    testNaN([divisor]);
+
+    if (typeof numbers == "number") return numbers / divisor;
+    else return numbers.map((n) => n / divisor);
   },
 };
