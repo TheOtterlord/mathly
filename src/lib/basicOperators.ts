@@ -21,7 +21,10 @@ export const BasicOperators = {
   },
 
   /**
-   * Get the collective subtraction of all the numbers provided.
+   * Subtraction a set of numbers in sequence.
+   * 
+   * This method will take a single number or set of numbers and subtract them in sequence.
+   * The result will be the difference of the first number minus the second number, minus the third number, etc.
    *
    * @param numbers - a number or an array of numbers
    * @returns {number} The subtraction of all the numbers provided
@@ -35,7 +38,10 @@ export const BasicOperators = {
   },
 
   /**
-   * Get the collective subtraction of all the numbers provided.
+   * Subtract a number from a set of numbers.
+   * 
+   * This method will take a single number or set of numbers and subtract the second argument.
+   * The result will be a number or set of numbers that are the difference of the first number(s) minus the second argument.
    *
    * @param numbers - a number or an array of numbers
    * @returns {number} The subtraction of all the numbers provided
