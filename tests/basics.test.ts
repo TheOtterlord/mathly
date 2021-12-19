@@ -18,6 +18,22 @@ test("sum method", () => {
   expect(() => Mathly.sum(1, 2, [1, "2"])).toThrow(Error);
 });
 
+test("subtract method", () => {
+  // Basic tests with two numbers
+  expect(Mathly.subtract(20, 10)).toBe(20 - 10);
+
+  // Basic tests with an array
+  expect(Mathly.subtract([20, 20])).toBe(20 - 20);
+
+  // Mixed tests with numbers and arrays of numbers
+  expect(Mathly.subtract(2000, 1000, [200, 100])).toBe(700);
+
+  // @ts-ignore Make sure it will not accept non-numbers
+  expect(() => Mathly.subtract(1, "2")).toThrow(Error);
+  // @ts-ignore
+  expect(() => Mathly.subtract(1, 2, [1, "2"])).toThrow(Error);
+});
+
 test("sequential multiplication", () => {
   // Basic two number tests
   expect(Mathly.multiply(2, 2)).toBe(4);
@@ -57,6 +73,24 @@ test("multiplication by a number", () => {
   expect(() => Mathly.multiplyBy(1, "2")).toThrow(Error);
 });
 
+test("subtraction by a number", () => {
+  // Tests with a single number
+  expect(Mathly.subtractBy(10, 10)).toBe(0);
+  expect(Mathly.subtractBy(10, 1)).toBe(9);
+  expect(Mathly.subtractBy(1, 2)).toBe(-1);
+  expect(Mathly.subtractBy(0, 0)).toBe(0);
+
+  // Tests with an array
+  expect(Mathly.subtractBy([0, 1], 0)).toStrictEqual([0, 1]);
+  expect(Mathly.subtractBy([10, 25], 1)).toStrictEqual([9, 24]);
+  expect(Mathly.subtractBy([5, 10], 15)).toStrictEqual([-10, -5]);
+
+  //@ts-ignore Make sure it will throw NaN errors
+  expect(() => Mathly.subtractBy("2", 1)).toThrow(Error);
+  //@ts-ignore
+  expect(() => Mathly.subtractBy(1, "2")).toThrow(Error);
+});
+
 test("sequential division", () => {
   // Test with a singile
   expect(Mathly.divide(4, 2)).toBe(2);
@@ -75,7 +109,7 @@ test("sequential division", () => {
 });
 
 test("division by a single number", () => {
-  // Test with a single multiplier
+  // Test with a single divisor
   expect(Mathly.divideBy(30, 2)).toBe(15);
   expect(Mathly.divideBy(100, 4)).toBe(25);
   expect(Mathly.divideBy(75, 3)).toBe(25);

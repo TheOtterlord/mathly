@@ -21,6 +21,40 @@ export const BasicOperators = {
   },
 
   /**
+   * Subtraction a set of numbers in sequence.
+   * 
+   * This method will take a single number or set of numbers and subtract them in sequence.
+   * The result will be the difference of the first number minus the second number, minus the third number, etc.
+   *
+   * @param numbers - a number or an array of numbers
+   * @returns {number} The subtraction of all the numbers provided
+   */
+  subtract(...numbers: (number | number[])[]): number {
+    let flatNumbers = numbers.flatMap((n) => n);
+    console.log(flatNumbers);
+    testNaN(numbers);
+
+    return flatNumbers.reduce((a, b) => a - b);
+  },
+
+  /**
+   * Subtract a number from a set of numbers.
+   * 
+   * This method will take a single number or set of numbers and subtract the second argument.
+   * The result will be a number or set of numbers that are the difference of the first number(s) minus the second argument.
+   *
+   * @param numbers - a number or an array of numbers
+   * @returns {number} The subtraction of all the numbers provided
+   */
+  subtractBy(numbers: number | number[], sub: number): number | number[] {
+    testNaN([numbers]);
+    testNaN([sub]);
+
+    if (typeof numbers == "number") return numbers - sub;
+    else return numbers.map((n) => n - sub);
+  },
+
+  /**
    * Multiply a set of numbers in sequential order
    *
    * This method will take all the number provided and multiply them together.  In this method brackets
